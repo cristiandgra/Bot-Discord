@@ -13,51 +13,74 @@ client.on('guildMemberAdd', member => {
     channel.send(`Bienvenido compañero, ${member}`);
   });
   */
+client.on('ready', () => {
+    console.log('BOT LISTO');
+})
 
-client.on('message', function(msg){
-    if(msg.content == '!numero'){
-        let numeroAleatorio =  Math.round(Math.random() * 150)
+client.on('guildMemberAdd', async member => {
+    const canal = member.guild.channels.cache.find(c => c.name === 'general');
+    if (!canal) return;
+    canal.send(`Bienvenido compañero ${member}, Gracias por entrar a mi canal.`)
+})
+
+client.on('message', function (msg) {
+    if (msg.content == '!id') {
+        console.log('El id es:', msg.author.id)
+    }
+})
+
+
+client.on('message', function (msg) {
+    if (msg.content == '!numero') {
+        let numeroAleatorio = Math.round(Math.random() * 150)
         msg.reply(numeroAleatorio)
     }
 })
 
-client.on('message', function (msg){
-    if(msg.content.toLowerCase() == 
+client.on('message', function (msg) {
+    if (msg.content.toLowerCase('') ===
         msg.content.includes('hdp')
-     || msg.content.includes('pollas')
-     || msg.content.includes('puta')
-     || msg.content.includes('puto')
-     || msg.content.includes('pta')
-     || msg.content.includes('cabron')
-     || msg.content.includes('payaso')
-     || msg.content.includes('maricon')
-     || msg.content.includes('pringado')
-     || msg.content.includes('retrasado')
-     || msg.content.includes('pingas')
-     || msg.content.includes('mierda')
-     || msg.content.includes('parguela')
-     || msg.content.includes('gay') 
-     || msg.content.includes('hdp')
-     ){
+        || msg.content.includes('pollas')
+        || msg.content.includes('puta')
+        || msg.content.includes('puto')
+        || msg.content.includes('pta')
+        || msg.content.includes('cabron')
+        || msg.content.includes('payaso')
+        || msg.content.includes('maricon')
+        || msg.content.includes('pringado')
+        || msg.content.includes('retrasado')
+        || msg.content.includes('pingas')
+        || msg.content.includes('mierda')
+        || msg.content.includes('parguela')
+        || msg.content.includes('gay')
+        || msg.content.includes('hdp')
+        || msg.content.includes('capullo')
+        || msg.content.includes('mamon')
+        || msg.content.includes('perra')
+        || msg.content.includes('Puta')
+        || msg.content.includes('Puto')
+        || msg.content.includes('Cabron')
+        || msg.content.includes('Capullo')
+    ) {
         msg.delete();
-        msg.reply('No seas tan triste y deja de insultar');
+        msg.reply('No se puede insultar Compañero.');
     }
-    })
+})
 
 
-client.on('message', async function(msg){
-    if(msg.content == '!cat'){
+client.on('message', async function (msg) {
+    if (msg.content == '!cat') {
         let randomcat = await axios.get('http://random.cat/view/1')
         msg.reply(randomcat)
     }
 })
 
-client.on('message', function(msg){
-    if(msg.content === '!clear'){
+client.on('message', function (msg) {
+    if (msg.content === '!clear') {
         msg.channel.bulkDelete(100).then(() => {
             msg.channel.send("Deleted 100 messages.")
-          });
-    
+        });
+
     }
 })
 
@@ -74,4 +97,4 @@ client.on('message', function (msg) {
 });
 */
 
-client.login('NzY1MjU2MDI0NjI5OTY4ODk2.X4SKNg.TZZHQeXrNlup49ujK4puFPANKbw');
+client.login('Your Token');
