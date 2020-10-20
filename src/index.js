@@ -2,6 +2,7 @@ require('dotenv').config()
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const axios = require('axios');
+const { endsWith } = require('ffmpeg-static');
 
 client.on('ready', () => {
     console.log('BOT LISTO');
@@ -35,29 +36,10 @@ client.on('message', function (msg) {
 //For delete bad words from the chat with a predefined message. - Para eliminar los insultos con un mensaje predefinido. 
 
 client.on('message', function (msg) {
-    if (msg.content.toLocaleLowerCase() ==
-        msg.content.includes('hdp')
-        || msg.content.includes('pollas')
-        || msg.content.includes('puta')
-        || msg.content.includes('puto')
-        || msg.content.includes('pta')
-        || msg.content.includes('cabron')
-        || msg.content.includes('payaso')
-        || msg.content.includes('maricon')
-        || msg.content.includes('pringado')
-        || msg.content.includes('retrasado')
-        || msg.content.includes('pingas')
-        || msg.content.includes('mierda')
-        || msg.content.includes('parguela')
-        || msg.content.includes('gay')
-        || msg.content.includes('hdp')
-        || msg.content.includes('capullo')
-        || msg.content.includes('mamon')
-        || msg.content.includes('perra')
-        || msg.content.includes('Puta')
-        || msg.content.includes('Puto')
-        || msg.content.includes('Cabron')
-        || msg.content.includes('Capullo')
+    let insultos = ["polla", "payaso","puta", "pta", "maricon", "parguela", "cabron", "capullo", "inutil", "subnormal", "retrasado", "hdp", "puto", "putos", "pinga", "gay", "bitch", "idiot", "tonto", "mongol", "pene", "ass", "culo", "mierda"]
+    for(i = 0; i < insultos.length; i++)
+    if (msg.content.includes(insultos[i])
+        
     ) {
         msg.delete();
         msg.reply('No se puede insultar Compañero.');
