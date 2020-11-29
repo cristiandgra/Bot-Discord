@@ -75,7 +75,7 @@ client.on("message", function (msg) {
 
 client.on("message", function (msg) {
   if (msg.content === "!clear") {
-    msg.channel.bulkDelete(100).then(() => {
+    msg.channel.bulkDelete(20).then(() => {
       msg.channel.send("Deleted 100 messages.");
     });
   }
